@@ -54,6 +54,7 @@ function enpc_proto.dissector(buffer,pinfo,tree)
         elseif buffer(10,2):uint()==65535 then
             subtree:add(buffer(10,2),"Result Code: " .. buffer(10,2):uint() .. " (Function not supported)")
         else
+-- TODO: add functions
             subtree:add(buffer(10,2),"Result Code: " .. buffer(10,2):uint() .. " (Unknown result code)")
         end
     end
@@ -71,5 +72,4 @@ function enpc_proto.dissector(buffer,pinfo,tree)
 end
 -- load the udp.port table
 udp_table = DissectorTable.get("udp.port")
--- register our protocol to handle udp port 7777
 udp_table:add(3289, enpc_proto)
