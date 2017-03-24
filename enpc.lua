@@ -2,8 +2,8 @@ enpc_proto = Proto("enpc","EpsonNet Protocol")
 
 function enpc_proto.dissector(buffer,pinfo,tree)
     pinfo.cols.protocol = "ENPC"
-    local subtree = tree:add(enpc_proto,buffer(),"ENPC Protocol Data")
-    subtree:add(buffer(0,5),"EPSON Header ")
+    local subtree = tree:add(enpc_proto,buffer(),"EpsonNet Protocol Data")
+    subtree:add(buffer(0,5),"EPSON Header")
     
 --    subtree = subtree:add(buffer(5,1),"Query or Command")
     if string.lower(buffer(5,1):string())==buffer(5,1):string() then
